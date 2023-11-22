@@ -1,14 +1,12 @@
-import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
-import connectDB from "./connectDB";
-
 dotenv.config();
-connectDB();
+import express, { Express, Request, Response } from "express";
+import "./config/sequelize";
 
 const app: Express = express();
 
-app.get("/", async (req: Request, res: Response) => {
-    res.send("asd");
+app.get("/api/okay/okay", async (req: Request, res: Response) => {
+    res.send("hello");
 });
 
 app.listen(process.env.PORT);
