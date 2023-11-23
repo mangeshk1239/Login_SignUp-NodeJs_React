@@ -8,3 +8,7 @@ export async function exists(userEmail: string) {
 export async function create(userData: any, hash: string) {
     return userRepository.create(userData, hash);
 }
+
+export async function valid(userEmail: string, userPassword: string) {
+    return await userRepository.valid(userEmail, userPassword);
+}
