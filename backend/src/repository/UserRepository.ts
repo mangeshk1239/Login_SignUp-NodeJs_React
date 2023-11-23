@@ -9,17 +9,18 @@ export async function exists(userEmail: string) {
         WHERE email = ?
     `;
     try {
-        await User.sequelize?.query(sql, {
+        const response = await User.sequelize?.query(sql, {
             replacements: [userEmail],
             type: QueryTypes.SELECT
         });
+        return response?.length != 0;
     } catch (error) {
         console.log("ERROR", error);
     }
 }
 
 // CHANGE ANYYYYYYYYYYYY
-export async function create(userData: any) {
+export async function create(userData: any, hash: string) {
     const sql: string =
         `
         INSERT INTO users
@@ -28,7 +29,7 @@ export async function create(userData: any) {
     `;
     try {
         await User.sequelize?.query(sql, {
-            replacements: [userData.firstName, userData.lastName, userData.email, userData.password],
+            replacements: [userData.firstName, userData.lastName, userData.email, hash],
             type: QueryTypes.INSERT
         });
     } catch (error) {

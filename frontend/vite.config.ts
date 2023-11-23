@@ -7,11 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-<<<<<<< HEAD
         target: 'http://localhost:5005',
-=======
-        target: 'http://localhost:5000',
->>>>>>> 62b8090 (Added frontend)
         changeOrigin: true,
         secure: false,
         ws: true,
