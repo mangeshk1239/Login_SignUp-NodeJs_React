@@ -4,10 +4,12 @@ import * as Component from "../../components/components";
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { ILoginUser } from './interfaces';
 import { Navigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 const defaultTheme = MUI.createTheme();
 
 export default function LoginElement(): JSX.Element {
+    const navigate = useNavigate();
     if (getCookie("token") != undefined) {
         return <Navigate to="/dashboard" />
     }
@@ -120,7 +122,7 @@ export default function LoginElement(): JSX.Element {
                 body: JSON.stringify(loginUserData)
             }).then(response => response.json());
 
-            console.log("response", response);
+            if (response.success == true) navigate("/dashboard");
         } catch (error) {
             console.log("ERROR", error);
         }
