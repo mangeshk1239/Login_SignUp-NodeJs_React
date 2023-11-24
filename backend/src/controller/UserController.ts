@@ -41,6 +41,7 @@ export async function loginUser(req: Request, res: Response) {
 export async function getUser(req: any, res: any) {
     try {
         console.log("userEmail", req.userEmail);
+        return res.status(200).send({ success: true });
     } catch (error) {
         console.log("ERROR", error);
         return res.status(500).send({ success: false, message: "Something went wrong" });

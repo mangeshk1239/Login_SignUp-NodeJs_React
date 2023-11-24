@@ -133,7 +133,6 @@ export default function RegisterElement(): JSX.Element {
                 password: data.get('password'),
             };
 
-            console.log("userData", registerUserData);
             const response = await fetch("/api/user/create", {
                 method: "POST",
                 headers: {
@@ -142,7 +141,8 @@ export default function RegisterElement(): JSX.Element {
                 body: JSON.stringify(registerUserData)
             }).then(response => response.json());
 
-            console.log("response", response);
+            if (response.success == true) alert("Registration successful! Please Login to your account");
+            else alert("Registration FAILED! Please try again");
         } catch (error) {
             console.log("ERROR", error);
         }

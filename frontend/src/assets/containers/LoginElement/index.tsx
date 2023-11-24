@@ -123,6 +123,7 @@ export default function LoginElement(): JSX.Element {
             }).then(response => response.json());
 
             if (response.success == true) navigate("/dashboard");
+            else alert("Invalid credentials, please try again");
         } catch (error) {
             console.log("ERROR", error);
         }

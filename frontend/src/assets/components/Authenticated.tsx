@@ -16,6 +16,7 @@ export default function Authenticated({ children }: IProps): JSX.Element {
 
     async function isAuthenticated() {
         const response = await fetch("/api/user/get").then(response => response.json());
+
         if (response.success == false) setLoggedIn(false);
         else setLoggedIn(true);
     }
